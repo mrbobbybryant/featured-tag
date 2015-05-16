@@ -1,0 +1,11 @@
+.featured-tag a {
+    display: inline-block;
+    padding: 5px 15px;
+    border: 1px solid black;
+    text-decoration: none;
+}
+
+.featured-tag a:hover {
+    background-color: black;
+    color: #fff;
+}
