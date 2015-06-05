@@ -1,11 +1,11 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Bobby
  * Date: 5/16/15
  * Time: 3:30 PM
  */
-
 class FeaturedPluginCustomizer {
 
 	public function __construct() {
@@ -18,10 +18,10 @@ class FeaturedPluginCustomizer {
 	 */
 	public function register_section( $wp_customize ) {
 
-		$wp_customize->add_section( 'featured_tag_settings' ,
+		$wp_customize->add_section( 'featured_tag_settings',
 			array(
-				'title' => __( 'Featured Tag Settings', 'featured-tags' ),
-				'priority' => 30,
+				'title'       => __( 'Featured Tag Settings', 'featured-tags' ),
+				'priority'    => 30,
 				'description' => __( 'This section allows you to customize how featured tags are displayed.', 'featured-tags' ),
 			)
 		);
@@ -41,21 +41,21 @@ class FeaturedPluginCustomizer {
 	private function register_location_setting( $wp_customize ) {
 		$wp_customize->add_setting(
 			'featured_tags_placement', array(
-				'default' => 'after_content',
-				'type' => 'option',
+				'default'    => 'after_content',
+				'type'       => 'option',
 				'capability' => 'manage_options',
-				'transport' => 'refresh',
+				'transport'  => 'refresh',
 			)
 		);
 		$wp_customize->add_control(
 			'featured_tags_placement', array(
-				'type' => 'radio',
-				'label' => __( 'Display Featured Tag', 'featured-tags' ),
+				'type'        => 'radio',
+				'label'       => __( 'Display Featured Tag', 'featured-tags' ),
 				'description' => __( 'Select where you would like the featured tag displayed.', 'featured-tags' ),
-				'section' => 'featured_tag_settings',
-				'setting' => 'featured_tags_placement',
-				'choices' => array(
-					'after_title' => __( 'After Post Title', 'featured-tags' ),
+				'section'     => 'featured_tag_settings',
+				'setting'     => 'featured_tags_placement',
+				'choices'     => array(
+					'after_title'   => __( 'After Post Title', 'featured-tags' ),
 					'after_content' => __( 'After Main Content', 'featured-tags' ),
 				),
 			)
@@ -71,22 +71,22 @@ class FeaturedPluginCustomizer {
 		$wp_customize->add_setting(
 			'featured_tag_font',
 			array(
-				'default' => 14,
-				'type' => 'option',
+				'default'    => 14,
+				'type'       => 'option',
 				'capability' => 'manage_options',
-				'transport' => 'postMessage',
+				'transport'  => 'postMessage',
 			)
 		);
 		$wp_customize->add_control(
 			'featured_tag_font',
 			array(
-				'type' => 'range',
-				'setting' => 'featured_tag_font',
-				'section' => 'featured_tag_settings',
-				'label' => __( 'Font Size', 'featured-tags' ),
+				'type'        => 'range',
+				'setting'     => 'featured_tag_font',
+				'section'     => 'featured_tag_settings',
+				'label'       => __( 'Font Size', 'featured-tags' ),
 				'input_attrs' => array(
-					'min' => 1,
-					'max' => 100,
+					'min'  => 1,
+					'max'  => 100,
 					'step' => 1,
 				),
 			)
@@ -126,22 +126,22 @@ class FeaturedPluginCustomizer {
 		$wp_customize->add_setting(
 			'featured_tag_border_radius',
 			array(
-				'default' => 0,
-				'type' => 'option',
+				'default'    => 0,
+				'type'       => 'option',
 				'capability' => 'manage_options',
-				'transport' => 'postMessage',
+				'transport'  => 'postMessage',
 			)
 		);
 		$wp_customize->add_control(
 			'featured_tag_border_radius',
 			array(
-				'type' => 'range',
-				'setting' => 'featured_tag_border_radius',
-				'section' => 'featured_tag_settings',
-				'label' => __( 'Rounded Borders', 'featured-tags' ),
+				'type'        => 'range',
+				'setting'     => 'featured_tag_border_radius',
+				'section'     => 'featured_tag_settings',
+				'label'       => __( 'Rounded Borders', 'featured-tags' ),
 				'input_attrs' => array(
-					'min' => 1,
-					'max' => 20,
+					'min'  => 1,
+					'max'  => 20,
 					'step' => .5,
 				),
 			)
@@ -229,11 +229,11 @@ class FeaturedPluginCustomizer {
 	 * Save Customizer style settings
 	 */
 	public function add_customizer_styles() {
-		$font_size = get_option( 'featured_tag_font' );
-		$font_color = get_option( 'tag_font_color' );
-		$border_color = get_option( 'tag_border_color' );
-		$hover_color = get_option( 'tag_hover_color' );
-		$tag_color = get_option( 'tag_color' );
+		$font_size     = get_option( 'featured_tag_font' );
+		$font_color    = get_option( 'tag_font_color' );
+		$border_color  = get_option( 'tag_border_color' );
+		$hover_color   = get_option( 'tag_hover_color' );
+		$tag_color     = get_option( 'tag_color' );
 		$border_radius = get_option( 'featured_tag_border_radius' );
 		?>
 		<style type="text/css">
@@ -243,7 +243,7 @@ class FeaturedPluginCustomizer {
 				color: <?php echo $font_color; ?>;
 				border-color: <?php echo $border_color; ?>;
 				background-color: <?php echo $tag_color; ?>;
-				border-radius: <?php echo $border_radius . 'px'; ?> ;
+				border-radius: <?php echo $border_radius . 'px'; ?>;
 			}
 
 			.featured-tag a:hover {
